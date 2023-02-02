@@ -13,6 +13,11 @@ object MovieTicketPresenter {
         cinema: Int,
         time: LocalDateTime
     ): MovieTicketPresenter = new MovieTicketPresenter(movie, cinema, time)
+
+    def printFormattedTicket(movieTicket: MovieTicketPresenter) = {
+        val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
+        println(s"Buying a ticket for ${movieTicket.movie} at ${dateTimeFormat.format(movieTicket.time)} (Cinema ${movieTicket.cinema}")
+    }
 }
 
 object MovieTicketBooking {
@@ -21,11 +26,8 @@ object MovieTicketBooking {
         val cinemaNo = 1
         val movieTime = LocalDateTime.parse("2023-01-25T18:15:00")
         val ticket = MovieTicketPresenter.buy(movieName, cinemaNo, movieTime)
-
-        val dtformat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
         
-        println(s"Buying a ticket for ${ticket.movie} at ${dtformat.format(ticket.time)} (Cinema ${ticket.cinema}")
-
+        MovieTicketPresenter.printFormattedTicket(ticket)
     }
 
 }
