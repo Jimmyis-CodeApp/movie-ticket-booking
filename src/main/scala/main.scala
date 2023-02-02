@@ -73,9 +73,10 @@ object MovieTicketBooking {
         MovieTicketPresenter.printFormattedTicket(ticket)
     }
 
-    def promptMenu[T](items: List[T], message: String): T = {
+    def promptMenu[T](items: List[T], message: String, displayFormatter: T => String): T = {
+        println("------------------------ Movie Showtimes -----------------------------")
         val options = items.zipWithIndex
-        options.map{ case (item, index) => println(s"${index + 1}. ${item}") }
+        options.map{ case (option, index) => println(s"${index + 1}. " + displayFormatter(option)) }
         val input = scala.io.StdIn.readLine()
         val selectedOption = if (input.length > 0 && onlyDigits(input)) input.toInt else -1
         
@@ -86,6 +87,7 @@ object MovieTicketBooking {
         else {
             println("Please select show you want to buy a ticket")
             return promptMenu(items, message)
+            return promptMenu(items, message, displayFormatter)
         }
     }
 
