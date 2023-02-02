@@ -19,7 +19,7 @@ case class Showtime(
     endAt: LocalDateTime
 )
 
-case class Show(
+case class MovieShow(
     movie: Movie,
     language: MovieLanguage,
     cinema: Cinema,
@@ -27,11 +27,11 @@ case class Show(
 )
 
 case class MovieTicket(
-    show: Show
+    show: MovieShow
 )
 
 object MovieTicket {
-    def buy(show: Show) = MovieTicket(show = show)
+    def buy(show: MovieShow) = MovieTicket(show = show)
 }
 
 case class MovieTicketPresenter(
