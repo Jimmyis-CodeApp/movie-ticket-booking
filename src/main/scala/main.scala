@@ -41,11 +41,6 @@ case class MovieTicketPresenter(
 )
 
 object MovieTicketPresenter {
-    def buy(
-        movie: String,
-        cinema: Int,
-        time: LocalDateTime
-    ): MovieTicketPresenter = new MovieTicketPresenter(movie, cinema, time)
 
     def printFormattedTicket(movieTicket: MovieTicketPresenter) = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
