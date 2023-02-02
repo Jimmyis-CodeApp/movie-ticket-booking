@@ -80,6 +80,35 @@ object MovieTicketBooking {
         val ticket = MovieTicketPresenter.buy(movieName, cinemaNo, movieTime)
         
         MovieTicketPresenter.printFormattedTicket(ticket)
+        val shows = List[MovieShow](
+            MovieShow(
+                movie = Movie(title = "Avatar 2"),
+                language = MovieLanguage(id = "TH", title = "Thai"),
+                cinema = Cinema(id = 1),
+                showtime = Showtime(
+                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
+                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                )
+            ),
+            MovieShow(
+                movie = Movie(title = "Avatar 2"),
+                language = MovieLanguage(id = "EN", title = "Soundtrack (English)"),
+                cinema = Cinema(id = 2),
+                showtime = Showtime(
+                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
+                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                )
+            ),
+            MovieShow(
+                movie = Movie(title = "M3GAN"),
+                language = MovieLanguage(id = "EN", title = "Soundtrack (English)"),
+                cinema = Cinema(id = 3),
+                showtime = Showtime(
+                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
+                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                )
+            )
+        )
     }
 
     def promptMenu[T](items: List[T], message: String, displayFormatter: T => String): T = {
