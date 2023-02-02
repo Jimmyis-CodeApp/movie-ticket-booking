@@ -74,12 +74,6 @@ object MovieTicketPresenter {
 
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
-        val movieName = "Avatar 2 [TH]"
-        val cinemaNo = 1
-        val movieTime = LocalDateTime.parse("2023-01-25T18:15:00")
-        val ticket = MovieTicketPresenter.buy(movieName, cinemaNo, movieTime)
-        
-        MovieTicketPresenter.printFormattedTicket(ticket)
         val shows = List[MovieShow](
             MovieShow(
                 movie = Movie(title = "Avatar 2"),
