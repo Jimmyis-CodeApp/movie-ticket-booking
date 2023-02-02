@@ -51,9 +51,10 @@ case class MovieTicketPresenter(
 object MovieTicketPresenter {
     def createPrintTicket(movieTicket: MovieTicket): MovieTicketPresenter = {
         val movieTitle = movieTicket.show.movie.title
+        val movieLanguage = movieTicket.show.language.id
         val cinemaId = movieTicket.show.cinema.id
         val showtime = movieTicket.show.showtime.startAt
-        new MovieTicketPresenter(movieTitle, cinemaId, showtime)
+        new MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
     }
 
     def printFormattedTicket(movieTicket: MovieTicketPresenter) = {
