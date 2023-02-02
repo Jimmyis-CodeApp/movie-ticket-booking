@@ -1,7 +1,11 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-case class MovieTicketPresenter( 
+case class Movie(
+    title: String
+)
+
+case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
     time: LocalDateTime 
