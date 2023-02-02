@@ -109,6 +109,14 @@ object MovieTicketBooking {
                 )
             )
         )
+
+    def runningLoop(shows: List[MovieShow]): Unit = {
+        val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShow.displayShowMenuItem)
+        val movieTicket = MovieTicket.buy(selectedShow)
+        val printedMovieTicket = MovieTicketPresenter.createPrintTicket(movieTicket)
+        MovieTicketPresenter.printFormattedTicket(printedMovieTicket)
+        println("\n")
+        runningLoop(shows)
     }
 
     def promptMenu[T](items: List[T], message: String, displayFormatter: T => String): T = {
