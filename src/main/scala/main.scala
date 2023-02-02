@@ -41,6 +41,12 @@ case class MovieTicketPresenter(
 )
 
 object MovieTicketPresenter {
+    def createPrintTicket(movieTicket: MovieTicket): MovieTicketPresenter = {
+        val movieTitle = movieTicket.show.movie.title
+        val cinemaId = movieTicket.show.cinema.id
+        val showtime = movieTicket.show.showtime.startAt
+        new MovieTicketPresenter(movieTitle, cinemaId, showtime)
+    }
 
     def printFormattedTicket(movieTicket: MovieTicketPresenter) = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
