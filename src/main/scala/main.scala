@@ -10,6 +10,10 @@ case class MovieLanguage(
     title: String
 )
 
+case class Cinema(
+    id: Int
+)
+
 case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
