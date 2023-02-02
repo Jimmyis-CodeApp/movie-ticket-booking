@@ -5,6 +5,11 @@ case class Movie(
     title: String
 )
 
+case class MovieLanguage(
+    id: String,
+    title: String
+)
+
 case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
