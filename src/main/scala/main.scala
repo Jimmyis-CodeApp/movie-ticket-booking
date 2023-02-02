@@ -81,12 +81,14 @@ object MovieTicketBooking {
         val selectedOption = if (input.length > 0 && onlyDigits(input)) input.toInt else -1
         
         if (selectedOption >= 1 && selectedOption < (items.length + 1)) {
-            println("You selected option " + selectedOption)
-            return items.apply(selectedOption.toInt - 1)
+            val selectedItem = items.apply(selectedOption.toInt - 1)
+            println("-----------------------------------------------------------")
+            println("| You selected " + displayFormatter(selectedItem))
+            println("-----------------------------------------------------------")
+            return selectedItem
         }
         else {
-            println("Please select show you want to buy a ticket")
-            return promptMenu(items, message)
+            println("Please select a movie show you want to buy a ticket")
             return promptMenu(items, message, displayFormatter)
         }
     }
