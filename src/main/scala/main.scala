@@ -14,6 +14,11 @@ case class Cinema(
     id: Int
 )
 
+case class Showtime(
+    startAt: LocalDateTime,
+    endAt: LocalDateTime
+)
+
 case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
