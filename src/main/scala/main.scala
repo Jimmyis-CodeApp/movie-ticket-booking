@@ -19,6 +19,13 @@ case class Showtime(
     endAt: LocalDateTime
 )
 
+case class Show(
+    movie: Movie,
+    language: MovieLanguage,
+    cinema: Cinema,
+    showtime: Showtime
+)
+
 case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
