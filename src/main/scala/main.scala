@@ -42,8 +42,9 @@ object MovieTicket {
 }
 
 case class MovieTicketPresenter(
-    movie: String, 
-    cinema: Int, 
+    movie: String,
+    movieLanguage: String,
+    cinema: Int,
     showtime: LocalDateTime 
 )
 
