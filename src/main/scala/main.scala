@@ -30,6 +30,10 @@ case class MovieTicket(
     show: Show
 )
 
+object MovieTicket {
+    def buy(show: Show) = MovieTicket(show = show)
+}
+
 case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
