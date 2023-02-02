@@ -26,6 +26,10 @@ case class Show(
     showtime: Showtime
 )
 
+case class MovieTicket(
+    show: Show
+)
+
 case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
