@@ -109,6 +109,8 @@ object MovieTicketBooking {
                 )
             )
         )
+        runningLoop(shows)
+    }
 
     def runningLoop(shows: List[MovieShow]): Unit = {
         val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShow.displayShowMenuItem)
