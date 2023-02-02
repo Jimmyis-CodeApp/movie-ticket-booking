@@ -59,7 +59,16 @@ object MovieTicketPresenter {
 
     def printFormattedTicket(movieTicket: MovieTicketPresenter) = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
-        println(s"Buying a ticket for ${movieTicket.movie} at ${dateTimeFormat.format(movieTicket.showtime)} (Cinema ${movieTicket.cinema})")
+        println(s"You have buy a ticket.")
+        println(s"+-----------------------------------+")
+        println(s"|                                   |")
+        println(s"|  ${movieTicket.movie} ${movieTicket.movieLanguage} ")
+        println(s"|                                   |")
+        println(s"|   Cinema ${movieTicket.cinema}                        |")
+        println(s"|   at ${dateTimeFormat.format(movieTicket.showtime)}             |")
+        println(s"|                                   |")
+        println(s"+-----------------------------------+")
+        
     }
 }
 
