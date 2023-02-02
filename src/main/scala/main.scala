@@ -1,18 +1,18 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-case class MovieTicket( 
+case class MovieTicketPresenter( 
     movie: String, 
     cinema: Int, 
     time: LocalDateTime 
 )
 
-object MovieTicket {
+object MovieTicketPresenter {
     def buy(
         movie: String,
         cinema: Int,
         time: LocalDateTime
-    ): MovieTicket = new MovieTicket(movie, cinema, time)
+    ): MovieTicketPresenter = new MovieTicketPresenter(movie, cinema, time)
 }
 
 object MovieTicketBooking {
@@ -20,7 +20,7 @@ object MovieTicketBooking {
         val movieName = "Avatar 2 [TH]"
         val cinemaNo = 1
         val movieTime = LocalDateTime.parse("2023-01-25T18:15:00")
-        val ticket = MovieTicket.buy(movieName, cinemaNo, movieTime)
+        val ticket = MovieTicketPresenter.buy(movieName, cinemaNo, movieTime)
 
         val dtformat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
         
