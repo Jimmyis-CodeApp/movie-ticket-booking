@@ -37,7 +37,7 @@ object MovieTicket {
 case class MovieTicketPresenter(
     movie: String, 
     cinema: Int, 
-    time: LocalDateTime 
+    showtime: LocalDateTime 
 )
 
 object MovieTicketPresenter {
