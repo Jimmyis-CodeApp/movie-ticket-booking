@@ -29,15 +29,13 @@ case class MovieShow(
     showtime: Showtime
 )
 
-object MovieShowPresenter {}
-
-object MovieShow {
-    // TODOS: 
-    // - Move this method to MovieShowPresenter
+object MovieShowPresenter {
     def formatMenuItem(show: MovieShow): String = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
         s"${show.movie.title} (${show.language.title}) show start at ${dateTimeFormat.format(show.showtime.startAt)} (Cinema ${show.cinema.id})"
+
     }
+    
 }
 
 case class MovieTicket(
@@ -118,7 +116,7 @@ object MovieTicketBooking {
     }
 
     def runningLoop(shows: List[MovieShow]): Unit = {
-        val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShow.formatMenuItem)
+        val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShowPresenter.formatMenuItem)
         val movieTicket = MovieTicket.buy(selectedShow)
         val printedMovieTicket = MovieTicketPresenter.createPrintTicket(movieTicket)
         MovieTicketPresenter.printFormattedTicket(printedMovieTicket)
