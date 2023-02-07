@@ -79,7 +79,7 @@ case class MovieTicket(
 )
 
 object MovieTicket {
-    def buy(show: MovieShow) = MovieTicket(show)
+    def buy(show: MovieShow): MovieTicket = MovieTicket(show)
 }
 
 case class MovieTicketPresenter(
