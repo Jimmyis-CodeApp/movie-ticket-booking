@@ -120,16 +120,16 @@ object MovieTicketView {
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
         val shows = MovieShow.generateMovieShowListMock
-        runningLoop(shows)
+        appLoop(shows)
     }
 
-    def runningLoop(shows: List[MovieShow]): Unit = {
+    def appLoop(shows: List[MovieShow]): Unit = {
         val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShowPresenter.formatMenuItem)
         val movieTicket = MovieTicket.buy(selectedShow)
         val printedMovieTicket = MovieTicketPresenter(movieTicket)
         MovieTicketView.printFormattedTicket(printedMovieTicket)
         println("\n")
-        runningLoop(shows)
+        appLoop(shows)
     }
 
     // NOTE: ทำเป็น Generic ทำไม? ทำเป็น Recursion ทำไม?
