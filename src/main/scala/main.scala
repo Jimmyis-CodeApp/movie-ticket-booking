@@ -46,7 +46,7 @@ case class MovieTicket(
 )
 
 object MovieTicket {
-    def buy(show: MovieShow) = MovieTicket(show = show) // TODO: Check that it can be use only "show" as a parameter
+    def buy(show: MovieShow) = MovieTicket(show)
 }
 
 case class MovieTicketPresenter(
