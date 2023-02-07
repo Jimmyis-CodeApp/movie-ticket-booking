@@ -54,7 +54,7 @@ case class MovieTicketPresenter(
 )
 
 object MovieTicketPresenter {
-    def createPrintTicket(movieTicket: MovieTicket): MovieTicketPresenter = { // TODO: Change it to apply method
+    def apply(movieTicket: MovieTicket): MovieTicketPresenter = {
         val movieTitle = movieTicket.show.movie.title
         val movieLanguage = movieTicket.show.language.id
         val cinemaId = movieTicket.show.cinema.id
@@ -118,7 +118,7 @@ object MovieTicketBooking {
     def runningLoop(shows: List[MovieShow]): Unit = {
         val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShowPresenter.formatMenuItem)
         val movieTicket = MovieTicket.buy(selectedShow)
-        val printedMovieTicket = MovieTicketPresenter.createPrintTicket(movieTicket)
+        val printedMovieTicket = MovieTicketPresenter(movieTicket)
         MovieTicketPresenter.printFormattedTicket(printedMovieTicket)
         println("\n")
         runningLoop(shows)
