@@ -78,6 +78,8 @@ object MovieTicketPresenter {
 
 }
 
+object MovieTicketView {}
+
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
         val shows = List[MovieShow](
