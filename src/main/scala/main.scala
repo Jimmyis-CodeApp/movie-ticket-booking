@@ -29,7 +29,41 @@ case class MovieShow(
     showtime: Showtime
 )
 
-object MovieShow {}
+object MovieShow {
+    def generateMovieShowListMock: List[MovieShow] = {
+        List[MovieShow](
+            // NOTE:  เรียกว่าอะไร?
+            MovieShow(
+                movie = Movie("Avatar 2"),
+                language = MovieLanguage("TH", "Thai"),
+                cinema = Cinema(1),
+                showtime = Showtime(
+                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
+                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                )
+            ),
+            MovieShow(
+                movie = Movie("Avatar 2"),
+                language = MovieLanguage("EN", "Soundtrack (English)"),
+                cinema = Cinema(2),
+                showtime = Showtime(
+                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
+                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                )
+            ),
+            MovieShow(
+                movie = Movie("M3GAN"),
+                language = MovieLanguage("EN", "Soundtrack (English)"),
+                cinema = Cinema(3),
+                showtime = Showtime(
+                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
+                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                )
+            )
+        )
+    }
+
+}
 
 object MovieShowPresenter {
     def formatMenuItem(show: MovieShow): String = {
@@ -85,37 +119,7 @@ object MovieTicketView {
 
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
-        val shows = List[MovieShow](
-            // TODO: ย้ายไป Mock นอก Function main
-            // NOTE:  เรียกว่าอะไร?
-            MovieShow(
-                movie = Movie("Avatar 2"),
-                language = MovieLanguage("TH", "Thai"),
-                cinema = Cinema(1),
-                showtime = Showtime(
-                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
-                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
-                )
-            ),
-            MovieShow(
-                movie = Movie("Avatar 2"),
-                language = MovieLanguage("EN", "Soundtrack (English)"),
-                cinema = Cinema(2),
-                showtime = Showtime(
-                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
-                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
-                )
-            ),
-            MovieShow(
-                movie = Movie("M3GAN"),
-                language = MovieLanguage("EN", "Soundtrack (English)"),
-                cinema = Cinema(id = 3),
-                showtime = Showtime(
-                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
-                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
-                )
-            )
-        )
+        val shows = MovieShow.generateMovieShowListMock
         runningLoop(shows)
     }
 
