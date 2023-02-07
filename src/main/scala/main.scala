@@ -31,30 +31,30 @@ object MovieShow {
         List[MovieShow](
             // NOTE:  เรียกว่าอะไร?
             MovieShow(
-                movie = Movie("Avatar 2"),
-                language = MovieLanguage("TH", "Thai"),
-                cinema = Cinema(1),
-                showtime = Showtime(
-                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
-                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                Movie("Avatar 2"),
+                MovieLanguage("TH", "Thai"),
+                Cinema(1),
+                Showtime(
+                    LocalDateTime.parse("2023-01-25T18:15:00"),
+                    LocalDateTime.parse("2023-01-25T18:15:00")
                 )
             ),
             MovieShow(
-                movie = Movie("Avatar 2"),
-                language = MovieLanguage("EN", "Soundtrack (English)"),
-                cinema = Cinema(2),
-                showtime = Showtime(
-                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
-                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                Movie("Avatar 2"),
+                MovieLanguage("EN", "Soundtrack (English)"),
+                Cinema(2),
+                Showtime(
+                    LocalDateTime.parse("2023-01-25T18:15:00"),
+                    LocalDateTime.parse("2023-01-25T18:15:00")
                 )
             ),
             MovieShow(
-                movie = Movie("M3GAN"),
-                language = MovieLanguage("EN", "Soundtrack (English)"),
-                cinema = Cinema(3),
-                showtime = Showtime(
-                    startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
-                    endAt = LocalDateTime.parse("2023-01-25T18:15:00")
+                Movie("M3GAN"),
+                MovieLanguage("EN", "Soundtrack (English)"),
+                Cinema(3),
+                Showtime(
+                    LocalDateTime.parse("2023-01-25T18:15:00"),
+                    LocalDateTime.parse("2023-01-25T18:15:00")
                 )
             )
         )
