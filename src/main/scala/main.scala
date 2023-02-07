@@ -102,7 +102,7 @@ object MovieTicketPresenter {
 }
 
 object MovieTicketView {
-    def printFormattedTicket(movieTicket: MovieTicketPresenter) = {
+    def printFormattedTicket(movieTicket: MovieTicketPresenter): Unit = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
         println(s"You have buy a ticket.")
         println(s"+-----------------------------------+")
