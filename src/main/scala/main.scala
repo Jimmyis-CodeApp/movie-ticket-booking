@@ -63,7 +63,10 @@ object MovieTicketPresenter {
         new MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
     }
 
-    def printFormattedTicket(movieTicket: MovieTicketPresenter) = { // TODO: Move to MovieTicketView model
+}
+
+object MovieTicketView {
+    def printFormattedTicket(movieTicket: MovieTicketPresenter) = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
         println(s"You have buy a ticket.")
         println(s"+-----------------------------------+")
@@ -77,8 +80,6 @@ object MovieTicketPresenter {
     }
 
 }
-
-object MovieTicketView {}
 
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
@@ -121,7 +122,7 @@ object MovieTicketBooking {
         val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShowPresenter.formatMenuItem)
         val movieTicket = MovieTicket.buy(selectedShow)
         val printedMovieTicket = MovieTicketPresenter(movieTicket)
-        MovieTicketPresenter.printFormattedTicket(printedMovieTicket)
+        MovieTicketView.printFormattedTicket(printedMovieTicket)
         println("\n")
         runningLoop(shows)
     }
