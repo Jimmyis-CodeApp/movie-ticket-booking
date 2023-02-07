@@ -1,9 +1,6 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-// TODO: Follow Code Formatting and Convention
-// TODO: Return type to all function
-
 case class Movie(
     title: String
 )
