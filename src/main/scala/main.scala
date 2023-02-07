@@ -140,7 +140,7 @@ object MovieTicketBooking {
         val options = items.zipWithIndex
         options.map { case (option, index) => println(s"${index + 1}. " + displayFormatter(option)) }
         val input = scala.io.StdIn.readLine()
-        val selectedOption = if (input.length > 0 && onlyDigits(input)) input.toInt else -1
+        val selectedOption = if (input.length > 0 && isOnlyDigits(input)) input.toInt else -1
         
         if (selectedOption >= 1 && selectedOption < (items.length + 1)) { // TODO: แก้ เลข 1 (อย่าให้เป็น Magic Number)
             val selectedItem = items.apply(selectedOption.toInt - 1)
@@ -154,5 +154,5 @@ object MovieTicketBooking {
         }
     }
 
-    def onlyDigits(s: String): Boolean = s.forall(_.isDigit) // TODO: Rename เป็น isOnlyDigits
+    def isOnlyDigits(s: String): Boolean = s.forall(_.isDigit)
 }
