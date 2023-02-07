@@ -29,7 +29,7 @@ case class MovieShow(
     showtime: Showtime
 )
 
-// TODO: Create MovieShowPresenter model
+object MovieShowPresenter {}
 
 object MovieShow {
     // TODOS: 
