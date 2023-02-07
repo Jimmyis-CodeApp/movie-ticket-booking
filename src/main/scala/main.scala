@@ -138,7 +138,7 @@ object MovieTicketBooking {
     def promptMenu[T](items: List[T], message: String, displayFormatter: T => String): T = {
         println("------------------------ Movie Showtimes -----------------------------") // NOTE: ใส่ทำไม
         val options = items.zipWithIndex
-        options.map{ case (option, index) => println(s"${index + 1}. " + displayFormatter(option)) } // TODO: หลัง Map ใส่ Space ก่อนปีกกา
+        options.map { case (option, index) => println(s"${index + 1}. " + displayFormatter(option)) }
         val input = scala.io.StdIn.readLine()
         val selectedOption = if (input.length > 0 && onlyDigits(input)) input.toInt else -1
         
@@ -148,8 +148,7 @@ object MovieTicketBooking {
             println("|  You selected " + displayFormatter(selectedItem))
             println("-----------------------------------------------------------")
             return selectedItem
-        } // TODO: Else เอามาไว้หลังปีกกา
-        else {
+        } else {
             println("Please select a movie show you want to buy a ticket") // NOTE: เหมือน Line 137 ใส่มาทำไม?
             return promptMenu(items, message, displayFormatter)
         }
