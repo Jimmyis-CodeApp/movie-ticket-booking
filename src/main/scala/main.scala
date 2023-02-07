@@ -36,7 +36,7 @@ object MovieShow {
                 Cinema(1),
                 Showtime(
                     LocalDateTime.parse("2023-01-25T18:15:00"),
-                    LocalDateTime.parse("2023-01-25T18:15:00")
+                    LocalDateTime.parse("2023-01-25T20:15:00")
                 )
             ),
             MovieShow(
@@ -45,7 +45,7 @@ object MovieShow {
                 Cinema(2),
                 Showtime(
                     LocalDateTime.parse("2023-01-25T18:15:00"),
-                    LocalDateTime.parse("2023-01-25T18:15:00")
+                    LocalDateTime.parse("2023-01-25T20:15:00")
                 )
             ),
             MovieShow(
@@ -54,7 +54,7 @@ object MovieShow {
                 Cinema(3),
                 Showtime(
                     LocalDateTime.parse("2023-01-25T18:15:00"),
-                    LocalDateTime.parse("2023-01-25T18:15:00")
+                    LocalDateTime.parse("2023-01-25T20:15:00")
                 )
             )
         )
