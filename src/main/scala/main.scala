@@ -141,8 +141,9 @@ object MovieTicketBooking {
         options.map { case (option, index) => println(s"${index + 1}. " + displayFormatter(option)) }
         val input = scala.io.StdIn.readLine()
         val selectedOption = if (input.length > 0 && isOnlyDigits(input)) input.toInt else -1
-        
-        if (selectedOption >= 1 && selectedOption < (items.length + 1)) { // TODO: แก้ เลข 1 (อย่าให้เป็น Magic Number)
+        val indexOffset = 1
+    
+        if (selectedOption >= 1 && selectedOption < (items.length + indexOffset)) {
             val selectedItem = items.apply(selectedOption.toInt - 1)
             println("-----------------------------------------------------------")
             println("|  You selected " + displayFormatter(selectedItem))
