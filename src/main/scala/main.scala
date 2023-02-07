@@ -84,30 +84,29 @@ object MovieTicketView {
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
         val shows = List[MovieShow](
-            // TODO: ไม่ต้อง Assign (เช่น ลบ movie = ออก)
-            // - ย้ายไป Mock นอก Function main
+            // TODO: ย้ายไป Mock นอก Function main
             // NOTE:  เรียกว่าอะไร?
             MovieShow(
-                movie = Movie(title = "Avatar 2"),
-                language = MovieLanguage(id = "TH", title = "Thai"),
-                cinema = Cinema(id = 1),
+                movie = Movie("Avatar 2"),
+                language = MovieLanguage("TH", "Thai"),
+                cinema = Cinema(1),
                 showtime = Showtime(
                     startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
                     endAt = LocalDateTime.parse("2023-01-25T18:15:00")
                 )
             ),
             MovieShow(
-                movie = Movie(title = "Avatar 2"),
-                language = MovieLanguage(id = "EN", title = "Soundtrack (English)"),
-                cinema = Cinema(id = 2),
+                movie = Movie("Avatar 2"),
+                language = MovieLanguage("EN", "Soundtrack (English)"),
+                cinema = Cinema(2),
                 showtime = Showtime(
                     startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
                     endAt = LocalDateTime.parse("2023-01-25T18:15:00")
                 )
             ),
             MovieShow(
-                movie = Movie(title = "M3GAN"),
-                language = MovieLanguage(id = "EN", title = "Soundtrack (English)"),
+                movie = Movie("M3GAN"),
+                language = MovieLanguage("EN", "Soundtrack (English)"),
                 cinema = Cinema(id = 3),
                 showtime = Showtime(
                     startAt = LocalDateTime.parse("2023-01-25T18:15:00"),
