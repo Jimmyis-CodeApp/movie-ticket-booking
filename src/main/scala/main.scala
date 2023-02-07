@@ -76,7 +76,7 @@ case class MovieTicket(
 )
 
 object MovieTicket {
-    def buy(show: MovieShow): MovieTicket = MovieTicket(show)
+    def apply(show: MovieShow): MovieTicket = MovieTicket(show)
 }
 
 case class MovieTicketPresenter(
@@ -122,7 +122,7 @@ object MovieTicketBooking {
 
     def appLoop(shows: List[MovieShow]): Unit = {
         val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShowPresenter.formatMenuItem)
-        val movieTicket = MovieTicket.buy(selectedShow)
+        val movieTicket = MovieTicket(selectedShow)
         val printedMovieTicket = MovieTicketPresenter(movieTicket)
         MovieTicketView.printFormattedTicket(printedMovieTicket)
         println("\n")
