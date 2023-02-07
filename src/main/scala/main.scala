@@ -29,6 +29,8 @@ case class MovieShow(
     showtime: Showtime
 )
 
+object MovieShow {}
+
 object MovieShowPresenter {
     def formatMenuItem(show: MovieShow): String = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
