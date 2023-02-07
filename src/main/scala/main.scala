@@ -74,8 +74,8 @@ object MovieTicketPresenter {
         println(s"|   at ${dateTimeFormat.format(movieTicket.showtime)}             |")
         println(s"|                                   |")
         println(s"+-----------------------------------+")
-        // TODO: Remove blank new line -- Code formatting (No indent and spacing)
-    } // TODO: Add new line before closing an object
+    }
+
 }
 
 object MovieTicketBooking {
