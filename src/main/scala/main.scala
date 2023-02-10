@@ -61,9 +61,14 @@ object MovieShowPresenter {
     
 }
 
+object MovieShowView {
+    def printMovieShowSelectionList(movieShowSelectionList: List[(Int, String)]): Unit = {
+        for (case (index, item) <- movieShowSelectionList) {
+            println(s"${index}. ${item}")
+        }
+    }
 
 }
-object MovieShowView {}
 
 case class MovieTicket(show: MovieShow)
 
