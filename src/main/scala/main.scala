@@ -75,8 +75,6 @@ case class MovieTicket(
     show: MovieShow
 )
 
-object MovieTicket {
-    def apply(show: MovieShow): MovieTicket = MovieTicket(show)
 }
 
 case class MovieTicketPresenter(
