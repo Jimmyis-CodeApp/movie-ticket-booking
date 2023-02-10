@@ -134,26 +134,6 @@ object MovieTicketBooking {
         appLoop(shows)
     }
 
-    // NOTE: ทำเป็น Generic ทำไม? ทำเป็น Recursion ทำไม?
-    // NOTE: Generic เป็นของที่ Design ยากที่สุด จาก ปสก พี่เดฟ... อย่าทำ ถ้าไม่มี Specific Case ที่มัน Work แน่ๆ
-    // อย่าเริ่มจาก Generic ก่อน แล้วเข้ามาหาความ Specific
-    def promptMenu[T](items: List[T], message: String, displayFormatter: T => String): T = {
-        println("------------------------ Movie Showtimes -----------------------------") // NOTE: ใส่ทำไม
-        val options = items.zipWithIndex
-        options.map { case (option, index) => println(s"${index + 1}. " + displayFormatter(option)) }
-        val input = scala.io.StdIn.readLine()
-        val selectedOption = if (input.length > 0 && isOnlyDigits(input)) input.toInt else -1
-        val indexOffset = 1
-    
-        if (selectedOption >= 1 && selectedOption < (items.length + indexOffset)) {
-            val selectedItem = items.apply(selectedOption.toInt - 1)
-            println("-----------------------------------------------------------")
-            println("|  You selected " + displayFormatter(selectedItem))
-            println("-----------------------------------------------------------")
-            return selectedItem
-        } else {
-            println("Please select a movie show you want to buy a ticket") // NOTE: เหมือน Line 137 ใส่มาทำไม?
-            return promptMenu(items, message, displayFormatter)
     def isOnlyDigits(s: String): Boolean = s.forall(_.isDigit)
 
     def processInput(acceptInputsList: Set[String]): String = {
