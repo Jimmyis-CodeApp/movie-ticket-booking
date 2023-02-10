@@ -5,9 +5,7 @@ case class Movie(title: String)
 
 case class MovieLanguage(id: String, title: String)
 
-case class Cinema(
-    id: Int
-)
+case class Cinema(id: Int)
 
 case class Showtime(
     startAt: LocalDateTime,
