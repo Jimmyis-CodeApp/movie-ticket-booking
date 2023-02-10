@@ -64,7 +64,7 @@ object MovieShowtimePresenter {
     
 }
 
-object MovieShowView {
+object MovieShowtimeView {
     def printMovieShowSelectionList(movieShowSelectionList: List[(Int, String)]): Unit = {
         for (case (index, item) <- movieShowSelectionList) {
             println(s"${index}. ${item}")
@@ -125,7 +125,7 @@ object MovieTicketBooking {
         val movieShowSelectionList = MovieTicketPresenter.generateMovieShowSelectionList(movieShows)
 
         println("------------------------ Movie Showtimes -----------------------------")
-        MovieShowView.printMovieShowSelectionList(movieShowSelectionList)
+        MovieShowtimeView.printMovieShowSelectionList(movieShowSelectionList)
 
         val movieShowSelectionSet = MovieTicketPresenter.generateMovieShowSelectableSet(movieShowSelectionList)
         val input = processInput(movieShowSelectionSet)
