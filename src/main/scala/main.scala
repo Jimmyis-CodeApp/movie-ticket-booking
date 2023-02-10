@@ -55,7 +55,7 @@ object MovieShowtime {
 
 }
 
-object MovieShowPresenter {
+object MovieShowtimePresenter {
     def formatMenuItem(show: MovieShowtime): String = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
 
@@ -94,7 +94,7 @@ object MovieTicketPresenter {
 
     def generateMovieShowSelectionList(movieList: List[MovieShowtime]): List[(Int, String)] = {
         val options = movieList.zipWithIndex
-        options.map { case (option, index) => (index + 1, MovieShowPresenter.formatMenuItem(option)) }
+        options.map { case (option, index) => (index + 1, MovieShowtimePresenter.formatMenuItem(option)) }
     }
 
     def generateMovieShowSelectableSet(movieShowSelectionList: List[(Int, String)]): Set[String] = {
