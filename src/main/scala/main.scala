@@ -12,18 +12,18 @@ case class Cinema(id: Int)
 
 case class Showtime(startAt: LocalDateTime, endAt: LocalDateTime)
 
-case class MovieShow(
+case class MovieShowtime(
     movie: Movie,
     language: MovieLanguage,
     cinema: Cinema,
     showtime: Showtime
 )
 
-object MovieShow {
-    def generateMovieShowListMock: List[MovieShow] = {
-        List[MovieShow](
+object MovieShowtime {
+    def generateMovieShowListMock: List[MovieShowtime] = {
+        List[MovieShowtime](
             // NOTE:  เรียกว่าอะไร?
-            MovieShow(
+            MovieShowtime(
                 Movie("Avatar 2"),
                 MovieLanguage("TH", "Thai"),
                 Cinema(1),
@@ -32,7 +32,7 @@ object MovieShow {
                     LocalDateTime.parse("2023-01-25T20:15:00")
                 )
             ),
-            MovieShow(
+            MovieShowtime(
                 Movie("Avatar 2"),
                 MovieLanguage("EN", "Soundtrack (English)"),
                 Cinema(2),
@@ -41,7 +41,7 @@ object MovieShow {
                     LocalDateTime.parse("2023-01-25T20:15:00")
                 )
             ),
-            MovieShow(
+            MovieShowtime(
                 Movie("M3GAN"),
                 MovieLanguage("EN", "Soundtrack (English)"),
                 Cinema(3),
@@ -56,7 +56,7 @@ object MovieShow {
 }
 
 object MovieShowPresenter {
-    def formatMenuItem(show: MovieShow): String = {
+    def formatMenuItem(show: MovieShowtime): String = {
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
 
         s"${show.movie.title} (${show.language.title}) show start at ${dateTimeFormat.format(show.showtime.startAt)} (Cinema ${show.cinema.id})"
@@ -73,7 +73,7 @@ object MovieShowView {
 
 }
 
-case class MovieTicket(show: MovieShow)
+case class MovieTicket(show: MovieShowtime)
 
 case class MovieTicketPresenter(
     movie: String,
@@ -92,7 +92,7 @@ object MovieTicketPresenter {
         new MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
     }
 
-    def generateMovieShowSelectionList(movieList: List[MovieShow]): List[(Int, String)] = {
+    def generateMovieShowSelectionList(movieList: List[MovieShowtime]): List[(Int, String)] = {
         val options = movieList.zipWithIndex
         options.map { case (option, index) => (index + 1, MovieShowPresenter.formatMenuItem(option)) }
     }
@@ -121,7 +121,7 @@ object MovieTicketView {
 
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
-        val movieShows = MovieShow.generateMovieShowListMock
+        val movieShows = MovieShowtime.generateMovieShowListMock
         val movieShowSelectionList = MovieTicketPresenter.generateMovieShowSelectionList(movieShows)
 
         println("------------------------ Movie Showtimes -----------------------------")
