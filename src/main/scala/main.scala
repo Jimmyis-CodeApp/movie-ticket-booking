@@ -1,9 +1,7 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-case class Movie(
-    title: String
-)
+case class Movie(title: String)
 
 case class MovieLanguage(
     id: String,
