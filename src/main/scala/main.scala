@@ -121,17 +121,24 @@ object MovieTicketView {
 
 object MovieTicketBooking {
     def main(args: Array[String]): Unit = {
-        val shows = MovieShow.generateMovieShowListMock
-        appLoop(shows)
-    }
+        val movieShows = MovieShow.generateMovieShowListMock
+        val movieShowSelectionList = MovieTicketPresenter.generateMovieShowSelectionList(movieShows)
 
-    def appLoop(shows: List[MovieShow]): Unit = {
-        val selectedShow = promptMenu[MovieShow](shows, "Please select show you want to buy a ticket", MovieShowPresenter.formatMenuItem)
-        val movieTicket = MovieTicket(selectedShow)
+        println("------------------------ Movie Showtimes -----------------------------")
+        MovieShowView.printMovieShowSelectionList(movieShowSelectionList)
+
+        val movieShowSelectionSet = MovieTicketPresenter.generateMovieShowSelectableSet(movieShowSelectionList)
+        val input = processInput(movieShowSelectionSet)
+
+        if (input == "EXIT") {
+            println("App is quiting, Bye bye")
+            sys.exit(1)
+        }
+        
+        val selectedMovieShow = movieShows.apply(input.toInt)
+        val movieTicket = MovieTicket(selectedMovieShow)
         val printedMovieTicket = MovieTicketPresenter(movieTicket)
         MovieTicketView.printFormattedTicket(printedMovieTicket)
-        println("\n")
-        appLoop(shows)
     }
 
     def isOnlyDigits(s: String): Boolean = s.forall(_.isDigit)
