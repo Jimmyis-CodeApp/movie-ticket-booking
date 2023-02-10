@@ -73,7 +73,7 @@ object MovieShowtimeView {
 
 }
 
-case class MovieTicket(show: MovieShowtime)
+case class MovieTicket(movieShowtime: MovieShowtime)
 
 case class MovieTicketPresenter(
     movie: String,
@@ -84,10 +84,10 @@ case class MovieTicketPresenter(
 
 object MovieTicketPresenter {
     def apply(movieTicket: MovieTicket): MovieTicketPresenter = {
-        val movieTitle = movieTicket.show.movie.title
-        val movieLanguage = movieTicket.show.language.id
-        val cinemaId = movieTicket.show.cinema.id
-        val showtime = movieTicket.show.showtime.startAt
+        val movieTitle = movieTicket.movieShowtime.movie.title
+        val movieLanguage = movieTicket.movieShowtime.language.id
+        val cinemaId = movieTicket.movieShowtime.cinema.id
+        val showtime = movieTicket.movieShowtime.showtime.startAt
 
         new MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
     }
