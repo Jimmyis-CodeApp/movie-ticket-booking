@@ -63,6 +63,7 @@ object MovieShowPresenter {
 
 
 }
+object MovieShowView {}
 
 case class MovieTicket(show: MovieShow)
 
