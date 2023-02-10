@@ -71,11 +71,10 @@ object MovieShowPresenter {
     
 }
 
-case class MovieTicket(
-    show: MovieShow
-)
 
 }
+
+case class MovieTicket(show: MovieShow)
 
 case class MovieTicketPresenter(
     movie: String,
