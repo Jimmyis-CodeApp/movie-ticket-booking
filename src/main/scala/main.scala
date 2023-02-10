@@ -94,6 +94,10 @@ object MovieTicketPresenter {
         options.map { case (option, index) => (index + 1, MovieShowPresenter.formatMenuItem(option)) }
     }
 
+    def generateMovieShowSelectableSet(movieShowSelectionList: List[(Int, String)]): Set[String] = {
+        movieShowSelectionList.map { case (index, item) => index.toString }.toSet
+    }
+
 }
 
 object MovieTicketView {
