@@ -89,6 +89,11 @@ object MovieTicketPresenter {
         new MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
     }
 
+    def generateMovieShowSelectionList(movieList: List[MovieShow]): List[(Int, String)] = {
+        val options = movieList.zipWithIndex
+        options.map { case (option, index) => (index + 1, MovieShowPresenter.formatMenuItem(option)) }
+    }
+
 }
 
 object MovieTicketView {
