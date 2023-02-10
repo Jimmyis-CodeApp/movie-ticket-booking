@@ -1,5 +1,8 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import scala.util.control.Breaks._
 
 case class Movie(title: String)
 
@@ -151,8 +154,27 @@ object MovieTicketBooking {
         } else {
             println("Please select a movie show you want to buy a ticket") // NOTE: เหมือน Line 137 ใส่มาทำไม?
             return promptMenu(items, message, displayFormatter)
+    def isOnlyDigits(s: String): Boolean = s.forall(_.isDigit)
+
+    def processInput(acceptInputsList: Set[String]): String = {
+        val br = new BufferedReader(new InputStreamReader(System.in))
+        var input = br.readLine()
+
+        breakable {
+            while (input != null && input.length != 0) {
+                // Check if the first character is the ASCII value for Esc (27)
+                if (input.charAt(0) == 27) { 
+                    input = "EXIT"
+                    break()
+                } else if (acceptInputsList.contains(input)) {
+                    break()
+                } else {
+                    input = br.readLine()
+                }
+            }
         }
+
+        return input
     }
 
-    def isOnlyDigits(s: String): Boolean = s.forall(_.isDigit)
 }
