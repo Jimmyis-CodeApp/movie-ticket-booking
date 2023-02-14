@@ -79,7 +79,7 @@ object MovieShowtimeView {
     def printMovieShowtimeSelectionList(movieShowtimeSelectionList: List[(Int, String)]): Unit =
         // NOTE: คำว่า item กำกวม
         for (case (index, item) <- movieShowtimeSelectionList) {
-            println(s"${index}. ${item}") // NOTE: Convention ของการใช้ ${} ไม่จำเป็นต้องใส่ {} กับ String หรือตัวแปรโดดๆ (Primitive)
+            println(s"$index. $item")
         }
 
 }
