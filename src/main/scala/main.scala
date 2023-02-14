@@ -71,6 +71,15 @@ object MovieShowtime {
             options.map { case (option, index) => (index + 1, MovieShowtimePresenter.formatMenuItem(option)) }
         }
 
+        // TODOS:
+        // - แก้ชื่อฟังก์ชัน ตามชื่อ Model ที่เปลี่ยนไป
+        // - Function บรรทัดเดียว ไม่ต้องใช้ { }
+        // NOTES:
+        // - คำว่า Selectable กำกวมมาก (ทำไมใช้คำนี้ ต่างจาก Selection ยังไง)
+        // - ฟังก์ชันนี้ อาจจะไม่จำเป็น
+        def generateMovieShowtimeSelectableSet(movieShowtimeSelectionList: List[(Int, String)]): Set[String] =
+            movieShowtimeSelectionList.map { case (index, item) => index.toString }.toSet
+
 }
 
 object MovieShowtimePresenter {
@@ -115,16 +124,6 @@ object MovieTicketPresenter {
         MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
     }
 
-    // TODOS: 
-    // - ย้ายไปไว้ใน MovieShowtime
-    // - แก้ชื่อฟังก์ชัน ตามชื่อ Model ที่เปลี่ยนไป
-    // - Function บรรทัดเดียว ไม่ต้องใช้ { }
-    // NOTES:
-    // - คำว่า Selectable กำกวมมาก (ทำไมใช้คำนี้ ต่างจาก Selection ยังไง)
-    // - ฟังก์ชันนี้ อาจจะไม่จำเป็น
-    def generateMovieShowtimeSelectableSet(movieShowtimeSelectionList: List[(Int, String)]): Set[String] =
-        movieShowtimeSelectionList.map { case (index, item) => index.toString }.toSet
-
 }
 
 object MovieTicketView {
@@ -162,7 +161,7 @@ object MovieTicketBooking {
         // NOTES: 
         // คำว่า Selection/Selectable ยังดูสับสน
         // - ตอนนี้เหมือนเอา Business Logic กับ Library มาปะปนใช้งานกัน (ควรทำ Middleware) - 
-        val movieShowtimeSelectionSet = MovieTicketPresenter.generateMovieShowtimeSelectableSet(movieShowtimeSelectionList) 
+        val movieShowtimeSelectionSet = MovieShowtime.generateMovieShowtimeSelectableSet(movieShowtimeSelectionList) 
         // NOTES: 
         // - ชื่อ processInput ไม่สื่อถึง Business Logic -- อยู่ผิดที่ผิดทาง ไม่รู้เลยว่า ฟังก์ชันทำหน้าที่อะไร
         // - ไม่รู้ด้วยว่ามันคือ Type อะไร (ต่อให้รู้ว่ามันคือ String แต่ก็ไม่รู้ว่ามันเป็นอะไรได้บ้าง) -- Type ไม่สื่อกับการนำไปใช้
