@@ -190,6 +190,8 @@ object MovieTicketBooking {
 
     def isOnlyDigits(s: String): Boolean = s.forall(_.isDigit) // TODO: ชื่อ Parameter s ไม่สื่อความหมาย
 
+    def isEscapeKey(string: String): Boolean = string.charAt(0) == 27
+
     // TODOS: 
     // - ชื่อ parameter ไม่ชัดเจน และไม่สะท้อนกับ Type (List -> Set)
     def processInput(acceptInputsList: Set[String]): String = {
