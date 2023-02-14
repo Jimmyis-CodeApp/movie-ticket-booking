@@ -132,7 +132,7 @@ object MovieTicketPresenter {
 
 object MovieTicketView {
     def printFormattedTicket(movieTicket: MovieTicketPresenter): Unit = {
-        val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
+        val movieShowtimeDateTime = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm").format(movieTicket.showtime)
 
         println(s"You have buy a ticket.")
         println(s"+-----------------------------------+")
@@ -140,7 +140,7 @@ object MovieTicketView {
         println(s"|  ${movieTicket.movie} ${movieTicket.movieLanguage} ")
         println(s"|                                   |")
         println(s"|   Cinema ${movieTicket.cinema}                        |")
-        println(s"|   at ${dateTimeFormat.format(movieTicket.showtime)}             |") // TODO: Process ให้เสร็จด้านที่ ให้เหลือเป็นตัวแปรตัวเดียว เช่น time
+        println(s"|   at ${movieShowtimeDateTime}             |")
         println(s"|                                   |")
         println(s"+-----------------------------------+")
     }
