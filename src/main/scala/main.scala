@@ -191,8 +191,8 @@ object MovieTicketBooking {
     // TODOS: 
     // - ชื่อ parameter ไม่ชัดเจน และไม่สะท้อนกับ Type (List -> Set)
     def processInput(acceptInputsList: Set[String]): String = {
-        val br = new BufferedReader(new InputStreamReader(System.in)) // TODO: เปลี่ยนชื่อตัวแปร จากตัวย่อ ให้เต็ม, NOTE: ชื่อตัวแปร อาจทำให้สับสบ
-        var input = br.readLine()
+        val bufferedReader = new BufferedReader(new InputStreamReader(System.in))
+        var input = bufferedReader.readLine()
 
         // TODOS:
         // 
