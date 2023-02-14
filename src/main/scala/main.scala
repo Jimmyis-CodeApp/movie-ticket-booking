@@ -28,7 +28,7 @@ case class MovieShowtime(
 )
 
 object MovieShowtime {
-    def generateMovieShowListMock: List[MovieShowtime] = { // TODO: ไม่ต้องมี {}
+    def generateMovieShowListMock: List[MovieShowtime] =
         List[MovieShowtime]( // ไม่ต้องระบุ Type Parameter ก็ได้ - TODO: เอาออก หรือไม่ก็ทำทุกที่ให้เหมือนกัน
             MovieShowtime(
                 Movie("Avatar 2"),
@@ -58,7 +58,6 @@ object MovieShowtime {
                 )
             )
         )
-    }
 
 }
 
@@ -78,12 +77,11 @@ object MovieShowtimeView {
     // TODO: แก้ชื่อฟังก์ชัน + Parameter ให้สอดคล้องกับ Model
     // NOTE: Parameter Type มัน Too generalized
     // อาจจะใช้ MovieShowtimePresenter มาแทนได้
-    def printMovieShowtimeSelectionList(movieShowtimeSelectionList: List[(Int, String)]): Unit = { // TODO: เอาปีกกาออก
+    def printMovieShowtimeSelectionList(movieShowtimeSelectionList: List[(Int, String)]): Unit =
         // NOTE: คำว่า item กำกวม
         for (case (index, item) <- movieShowtimeSelectionList) {
             println(s"${index}. ${item}") // NOTE: Convention ของการใช้ ${} ไม่จำเป็นต้องใส่ {} กับ String หรือตัวแปรโดดๆ (Primitive)
         }
-    }
 
 }
 
@@ -128,9 +126,8 @@ object MovieTicketPresenter {
     // NOTES:
     // - คำว่า Selectable กำกวมมาก (ทำไมใช้คำนี้ ต่างจาก Selection ยังไง)
     // - ฟังก์ชันนี้ อาจจะไม่จำเป็น
-    def generateMovieShowtimeSelectableSet(movieShowtimeSelectionList: List[(Int, String)]): Set[String] = { 
+    def generateMovieShowtimeSelectableSet(movieShowtimeSelectionList: List[(Int, String)]): Set[String] =
         movieShowtimeSelectionList.map { case (index, item) => index.toString }.toSet
-    }
 
 }
 
