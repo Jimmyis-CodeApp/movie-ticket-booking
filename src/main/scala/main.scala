@@ -29,7 +29,7 @@ case class MovieShowtime(
 
 object MovieShowtime {
     def generateMovieShowListMock: List[MovieShowtime] =
-        List[MovieShowtime]( // ไม่ต้องระบุ Type Parameter ก็ได้ - TODO: เอาออก หรือไม่ก็ทำทุกที่ให้เหมือนกัน
+        List(
             MovieShowtime(
                 Movie("Avatar 2"),
                 MovieLanguage("TH", "Thai"),
