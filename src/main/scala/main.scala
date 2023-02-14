@@ -100,8 +100,7 @@ object MovieTicketPresenter {
         val cinemaId = movieTicket.movieShowtime.cinema.id
         val showtime = movieTicket.movieShowtime.showtime.startAt
 
-        // NOTE: new keyword
-        new MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
+        MovieTicketPresenter(movieTitle, movieLanguage, cinemaId, showtime)
     }
 
     // TODOS: 
