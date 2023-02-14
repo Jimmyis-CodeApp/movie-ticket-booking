@@ -59,6 +59,18 @@ object MovieShowtime {
             )
         )
 
+        // TODOS:
+        // - แก้ชื่อฟังก์ชัน ตามชื่อ Model ที่เปลี่ยนไป
+        // NOTE:
+        // - ชื่อฟังก์ชัน ไม่สอดคล้องกับ Return type -- จะรู้ได้ไง ถ้าอ่านจากชื่อฟังก์ชั่น ว่ามัน Return MovieSHowSelectionList
+        // - คำว่า option ดูกำกวมมาก
+        // - ฟังก์ชั่นนี้เอาไว้ทำอะไรได้บ้าง
+        def generateMovieShowtimeSelectionList(movieShowtimeList: List[MovieShowtime]): List[(Int, String)] = {
+            val options = movieShowtimeList.zipWithIndex
+            
+            options.map { case (option, index) => (index + 1, MovieShowtimePresenter.formatMenuItem(option)) }
+        }
+
 }
 
 object MovieShowtimePresenter {
@@ -106,19 +118,6 @@ object MovieTicketPresenter {
     // TODOS: 
     // - ย้ายไปไว้ใน MovieShowtime
     // - แก้ชื่อฟังก์ชัน ตามชื่อ Model ที่เปลี่ยนไป
-    // NOTE:
-    // - ชื่อฟังก์ชัน ไม่สอดคล้องกับ Return type -- จะรู้ได้ไง ถ้าอ่านจากชื่อฟังก์ชั่น ว่ามัน Return MovieSHowSelectionList
-    // - คำว่า option ดูกำกวมมาก
-    // - ฟังก์ชั่นนี้เอาไว้ทำอะไรได้บ้าง
-    def generateMovieShowtimeSelectionList(movieShowtimeList: List[MovieShowtime]): List[(Int, String)] = {
-        val options = movieShowtimeList.zipWithIndex
-        
-        options.map { case (option, index) => (index + 1, MovieShowtimePresenter.formatMenuItem(option)) }
-    }
-
-    // TODOS: 
-    // - ย้ายไปไว้ใน MovieShowtime
-    // - แก้ชื่อฟังก์ชัน ตามชื่อ Model ที่เปลี่ยนไป
     // - Function บรรทัดเดียว ไม่ต้องใช้ { }
     // NOTES:
     // - คำว่า Selectable กำกวมมาก (ทำไมใช้คำนี้ ต่างจาก Selection ยังไง)
@@ -154,7 +153,7 @@ object MovieTicketBooking {
         // - ทำไม ถึงไม่เอา MovieShowtimes ไปเลือกเลย (ทำไมถึงต้องไปทำ List)
         // TODO: ยุบ การ Generate MovieShowtimesSelectionList ออกไปเลย แล้วเอา MovieShowTimes ไป Print
         val movieShowtimes: List[MovieShowtime] = MovieShowtime.generateMovieShowListMock // TODO: แก้ชื่อตัวแปรให้ตรงกับ Model
-        val movieShowtimeSelectionList: List[(Int, String)] = MovieTicketPresenter.generateMovieShowtimeSelectionList(movieShowtimes) // TODO: - แก้ชื่อตัวแปรให้ตรงกับ Model
+        val movieShowtimeSelectionList: List[(Int, String)] = MovieShowtime.generateMovieShowtimeSelectionList(movieShowtimes) // TODO: - แก้ชื่อตัวแปรให้ตรงกับ Model
 
         println("------------------------ Movie Showtimes -----------------------------")
         MovieShowtimeView.printMovieShowtimeSelectionList(movieShowtimeSelectionList)
