@@ -107,13 +107,12 @@ object MovieTicketPresenter {
     // TODOS: 
     // - ย้ายไปไว้ใน MovieShowtime
     // - แก้ชื่อฟังก์ชัน ตามชื่อ Model ที่เปลี่ยนไป
-    // - แก้ชื่อ Parameter movieList ให้ถูกต้องตาม type (MovieShowtime)
     // NOTE:
     // - ชื่อฟังก์ชัน ไม่สอดคล้องกับ Return type -- จะรู้ได้ไง ถ้าอ่านจากชื่อฟังก์ชั่น ว่ามัน Return MovieSHowSelectionList
     // - คำว่า option ดูกำกวมมาก
     // - ฟังก์ชั่นนี้เอาไว้ทำอะไรได้บ้าง
-    def generateMovieShowtimeSelectionList(movieList: List[MovieShowtime]): List[(Int, String)] = {
-        val options = movieList.zipWithIndex
+    def generateMovieShowtimeSelectionList(movieShowtimeList: List[MovieShowtime]): List[(Int, String)] = {
+        val options = movieShowtimeList.zipWithIndex
         
         options.map { case (option, index) => (index + 1, MovieShowtimePresenter.formatMenuItem(option)) }
     }
