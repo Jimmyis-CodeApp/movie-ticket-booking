@@ -205,7 +205,7 @@ object MovieTicketBooking {
         breakable {
             while (input != null && input.length != 0) {
                 // Check if the first character is the ASCII value for Esc (27)
-                if (input.charAt(0) == 27) { // TODO: แยกให้เป็นฟังก์ชันใหม่ -> isEscapeKey
+                if (isEscapeKey(input)) {
                     input = "EXIT"
                     break()
                 } else if (acceptInputsList.contains(input)) {
