@@ -83,13 +83,9 @@ object MovieShowtime {
 }
 
 object MovieShowtimePresenter {
-    def formatMenuItem(movieShowtime: MovieShowtime): String = {
-        // NOTE: ตัวแปรตรงนี้อาจจะไม่จำเป็น เพราะไม่มีการ Reuse
-        val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
-
+    def formatMenuItem(movieShowtime: MovieShowtime): String =
         // NOTE: หา Convention ในการ ทำ String ยาว
-        s"${movieShowtime.movie.title} (${movieShowtime.language.title}) show start at ${dateTimeFormat.format(movieShowtime.showtime.startAt)} (Cinema ${movieShowtime.cinema.id})"
-    }
+        s"${movieShowtime.movie.title} (${movieShowtime.language.title}) show start at ${DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm").format(movieShowtime.showtime.startAt)} (Cinema ${movieShowtime.cinema.id})"
     
 }
 
