@@ -133,10 +133,8 @@ object MovieTicketPresenter {
 
 object MovieTicketView {
     def printFormattedTicket(movieTicket: MovieTicketPresenter): Unit = {
-        // TODOS: 
-        // - ก่อน Println ต้องเว้นบรรทัด
-        // - 
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
+
         println(s"You have buy a ticket.")
         println(s"+-----------------------------------+")
         println(s"|                                   |")
@@ -186,7 +184,8 @@ object MovieTicketBooking {
         // - ทำไม ไม่เป็นฟังก์ชันเดียว ที่ได้ SelectedMovieShowtime เลย
         val selectedMovieShowtime = movieShowtimes.apply(input.toInt) 
         val movieTicket = MovieTicket(selectedMovieShowtime)
-        val printedMovieTicket = MovieTicketPresenter(movieTicket) // TODO: เว้นบรรทัดก่อนใช้ฟังก์ชันที่ Println
+        val printedMovieTicket = MovieTicketPresenter(movieTicket)
+
         MovieTicketView.printFormattedTicket(printedMovieTicket)
     }
 
