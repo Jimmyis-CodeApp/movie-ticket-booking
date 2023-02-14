@@ -62,13 +62,12 @@ object MovieShowtime {
 }
 
 object MovieShowtimePresenter {
-    // TODO: แก้ parameter name เป็น movieShowtime
-    def formatMenuItem(show: MovieShowtime): String = {
+    def formatMenuItem(movieShowtime: MovieShowtime): String = {
         // NOTE: ตัวแปรตรงนี้อาจจะไม่จำเป็น เพราะไม่มีการ Reuse
         val dateTimeFormat = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
 
         // NOTE: หา Convention ในการ ทำ String ยาว
-        s"${show.movie.title} (${show.language.title}) show start at ${dateTimeFormat.format(show.showtime.startAt)} (Cinema ${show.cinema.id})"
+        s"${movieShowtime.movie.title} (${movieShowtime.language.title}) show start at ${dateTimeFormat.format(movieShowtime.showtime.startAt)} (Cinema ${movieShowtime.cinema.id})"
     }
     
 }
