@@ -188,7 +188,7 @@ object MovieTicketBooking {
         MovieTicketView.printFormattedTicket(printedMovieTicket)
     }
 
-    def isOnlyDigits(s: String): Boolean = s.forall(_.isDigit) // TODO: ชื่อ Parameter s ไม่สื่อความหมาย
+    def isOnlyDigits(string: String): Boolean = string.forall(_.isDigit)
 
     def isEscapeKey(string: String): Boolean = string.charAt(0) == 27
 
