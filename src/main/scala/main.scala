@@ -5,7 +5,6 @@ import java.io.InputStreamReader
 import scala.util.control.Breaks._
 
 // TODOS:
-// - Recheck คำว่า movieShow เป็น movieShowtime ทั้งหมดรึยัง
 // - ลองเช็คเรื่อง Level of Abstraction และการตั้งชื่อฟังก์ชัน สะท้อนกับการใช้งานจริง หรือสื่อความหมาย ตรงกับ value ที่ได้ไหม
 // - Data model ในหลายส่วน ยังแปลกๆ -- ต้อง Specify เพิ่ม
 
@@ -79,9 +78,9 @@ object MovieShowtimeView {
     // TODO: แก้ชื่อฟังก์ชัน + Parameter ให้สอดคล้องกับ Model
     // NOTE: Parameter Type มัน Too generalized
     // อาจจะใช้ MovieShowtimePresenter มาแทนได้
-    def printMovieShowSelectionList(movieShowSelectionList: List[(Int, String)]): Unit = { // TODO: เอาปีกกาออก
+    def printMovieShowtimeSelectionList(movieShowtimeSelectionList: List[(Int, String)]): Unit = { // TODO: เอาปีกกาออก
         // NOTE: คำว่า item กำกวม
-        for (case (index, item) <- movieShowSelectionList) {
+        for (case (index, item) <- movieShowtimeSelectionList) {
             println(s"${index}. ${item}") // NOTE: Convention ของการใช้ ${} ไม่จำเป็นต้องใส่ {} กับ String หรือตัวแปรโดดๆ (Primitive)
         }
     }
@@ -116,7 +115,7 @@ object MovieTicketPresenter {
     // - ชื่อฟังก์ชัน ไม่สอดคล้องกับ Return type -- จะรู้ได้ไง ถ้าอ่านจากชื่อฟังก์ชั่น ว่ามัน Return MovieSHowSelectionList
     // - คำว่า option ดูกำกวมมาก
     // - ฟังก์ชั่นนี้เอาไว้ทำอะไรได้บ้าง
-    def generateMovieShowSelectionList(movieList: List[MovieShowtime]): List[(Int, String)] = {
+    def generateMovieShowtimeSelectionList(movieList: List[MovieShowtime]): List[(Int, String)] = {
         val options = movieList.zipWithIndex
         
         options.map { case (option, index) => (index + 1, MovieShowtimePresenter.formatMenuItem(option)) }
@@ -129,8 +128,8 @@ object MovieTicketPresenter {
     // NOTES:
     // - คำว่า Selectable กำกวมมาก (ทำไมใช้คำนี้ ต่างจาก Selection ยังไง)
     // - ฟังก์ชันนี้ อาจจะไม่จำเป็น
-    def generateMovieShowSelectableSet(movieShowSelectionList: List[(Int, String)]): Set[String] = { 
-        movieShowSelectionList.map { case (index, item) => index.toString }.toSet
+    def generateMovieShowtimeSelectableSet(movieShowtimeSelectionList: List[(Int, String)]): Set[String] = { 
+        movieShowtimeSelectionList.map { case (index, item) => index.toString }.toSet
     }
 
 }
@@ -162,21 +161,21 @@ object MovieTicketBooking {
         // NOTES: Line 154-155
         // - ทำไม ถึงไม่เอา MovieShowtimes ไปเลือกเลย (ทำไมถึงต้องไปทำ List)
         // TODO: ยุบ การ Generate MovieShowtimesSelectionList ออกไปเลย แล้วเอา MovieShowTimes ไป Print
-        val movieShows: List[MovieShowtime] = MovieShowtime.generateMovieShowListMock // TODO: แก้ชื่อตัวแปรให้ตรงกับ Model
-        val movieShowSelectionList: List[(Int, String)] = MovieTicketPresenter.generateMovieShowSelectionList(movieShows) // TODO: - แก้ชื่อตัวแปรให้ตรงกับ Model
+        val movieShowtimes: List[MovieShowtime] = MovieShowtime.generateMovieShowListMock // TODO: แก้ชื่อตัวแปรให้ตรงกับ Model
+        val movieShowtimeSelectionList: List[(Int, String)] = MovieTicketPresenter.generateMovieShowtimeSelectionList(movieShowtimes) // TODO: - แก้ชื่อตัวแปรให้ตรงกับ Model
 
         println("------------------------ Movie Showtimes -----------------------------")
-        MovieShowtimeView.printMovieShowSelectionList(movieShowSelectionList)
+        MovieShowtimeView.printMovieShowtimeSelectionList(movieShowtimeSelectionList)
 
         // TODO: - แก้ชื่อตัวแปรให้ตรงกับ Model
         // NOTES: 
         // คำว่า Selection/Selectable ยังดูสับสน
         // - ตอนนี้เหมือนเอา Business Logic กับ Library มาปะปนใช้งานกัน (ควรทำ Middleware) - 
-        val movieShowSelectionSet = MovieTicketPresenter.generateMovieShowSelectableSet(movieShowSelectionList) 
+        val movieShowtimeSelectionSet = MovieTicketPresenter.generateMovieShowtimeSelectableSet(movieShowtimeSelectionList) 
         // NOTES: 
         // - ชื่อ processInput ไม่สื่อถึง Business Logic -- อยู่ผิดที่ผิดทาง ไม่รู้เลยว่า ฟังก์ชันทำหน้าที่อะไร
         // - ไม่รู้ด้วยว่ามันคือ Type อะไร (ต่อให้รู้ว่ามันคือ String แต่ก็ไม่รู้ว่ามันเป็นอะไรได้บ้าง) -- Type ไม่สื่อกับการนำไปใช้
-        val input = processInput(movieShowSelectionSet) 
+        val input = processInput(movieShowtimeSelectionSet) 
         // ** ทำไมต้อง ทำให้กดเข้าไปดูถึง Low-Level (Context ไม่มี/ไม่ชัดเจน, ชื่อไม่ตรง, Type ไม่มี)
 
         if (input == "EXIT") {
@@ -188,8 +187,8 @@ object MovieTicketBooking {
         // - แก้ชื่อตัวแปร
         // NOTE:
         // - ทำไม ไม่เป็นฟังก์ชันเดียว ที่ได้ SelectedMovieShowtime เลย
-        val selectedMovieShow = movieShows.apply(input.toInt) 
-        val movieTicket = MovieTicket(selectedMovieShow)
+        val selectedMovieShowtime = movieShowtimes.apply(input.toInt) 
+        val movieTicket = MovieTicket(selectedMovieShowtime)
         val printedMovieTicket = MovieTicketPresenter(movieTicket) // TODO: เว้นบรรทัดก่อนใช้ฟังก์ชันที่ Println
         MovieTicketView.printFormattedTicket(printedMovieTicket)
     }
