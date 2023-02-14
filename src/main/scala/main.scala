@@ -84,8 +84,12 @@ object MovieShowtime {
 
 object MovieShowtimePresenter {
     def formatMenuItem(movieShowtime: MovieShowtime): String =
-        // NOTE: หา Convention ในการ ทำ String ยาว
-        s"${movieShowtime.movie.title} (${movieShowtime.language.title}) show start at ${DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm").format(movieShowtime.showtime.startAt)} (Cinema ${movieShowtime.cinema.id})"
+        s"${movieShowtime.movie.title} " +
+          s"(${movieShowtime.language.title}) " +
+          s"show start at " +
+          s"${DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm")
+            .format(movieShowtime.showtime.startAt)} " +
+          s"(Cinema ${movieShowtime.cinema.id})"
     
 }
 
