@@ -134,6 +134,7 @@ object ConsoleMovieTicketView extends MovieTicketView {
         MovieShowtimeView.printMovieShowtimes(movieShowtimes)
         
         val input = Main.promptForUserInput
+
         MovieShowtimePresenter.selectMovieShowtime(movieShowtimes, input)
     }
 
