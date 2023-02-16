@@ -99,15 +99,6 @@ object MovieShowtimePresenter {
 }
 
 object MovieShowtimeView {
-    // TODO: แก้ชื่อฟังก์ชัน + Parameter ให้สอดคล้องกับ Model
-    // NOTE: Parameter Type มัน Too generalized
-    // อาจจะใช้ MovieShowtimePresenter มาแทนได้
-    def printMovieShowtimeSelectionList(movieShowtimeSelectionList: List[(Int, String)]): Unit =
-        // NOTE: คำว่า item กำกวม
-        for (case (index, item) <- movieShowtimeSelectionList) {
-            println(s"$index. $item")
-        }
-
     def printMovieShowtimes(movieShowtimes: List[MovieShowtime]): Unit = {
         movieShowtimes.zipWithIndex.map { case (movieShowtime, index) => {
             val order = index + 1
