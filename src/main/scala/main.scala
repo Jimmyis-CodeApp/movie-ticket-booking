@@ -219,7 +219,7 @@ object MovieTicketBooking {
                 } else if (acceptInputsList.contains(input)) {
                     break()
                 } else {
-                    input = br.readLine()
+                    input = bufferedReader.readLine()
                 }
             }
         }
