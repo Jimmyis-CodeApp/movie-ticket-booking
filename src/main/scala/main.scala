@@ -144,7 +144,7 @@ trait MovieTicketView {
 
 }
 
-object ConsoleMovieTicketView {
+object ConsoleMovieTicketView extends MovieTicketView {
     def displayMovieTicket(movieTicket: MovieTicketPresenter): Unit = {
         val movieShowtimeDateTime = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm").format(movieTicket.showtime)
 
