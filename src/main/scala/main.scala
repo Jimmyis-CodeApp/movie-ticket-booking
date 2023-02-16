@@ -164,7 +164,7 @@ object ConsoleMovieTicketView {
 // NOTE: ชื่อ Object ไม่สะท้อนกับสิ่งที่ App ทำได้จริง
 // ใน Scala เราจะไม่ไ่ช้ชื่อไฟล์ว่า main.scala แต่จะใช้ชื่อไฟล์ ให้ตรงกันกับชื่อ Object หรือ Class
 // TODO: เปลี่ยนชื่อไฟล์เป็น MovieTicketBooking.scala (ใช้ Pascal case)
-object MovieTicketBooking {
+object Main {
     def main(args: Array[String]): Unit = {
         // NOTES: Line 154-155
         // - ทำไม ถึงไม่เอา MovieShowtimes ไปเลือกเลย (ทำไมถึงต้องไปทำ List)
