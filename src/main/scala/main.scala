@@ -174,40 +174,12 @@ object ConsoleMovieTicketView extends MovieTicketView {
 // TODO: เปลี่ยนชื่อไฟล์เป็น MovieTicketBooking.scala (ใช้ Pascal case)
 object Main {
     def main(args: Array[String]): Unit = {
-        // NOTES: Line 154-155
-        // - ทำไม ถึงไม่เอา MovieShowtimes ไปเลือกเลย (ทำไมถึงต้องไปทำ List)
-        // TODO: ยุบ การ Generate MovieShowtimesSelectionList ออกไปเลย แล้วเอา MovieShowTimes ไป Print
         val movieShowtimes: List[MovieShowtime] = MovieShowtime.generateMovieShowListMock // TODO: แก้ชื่อตัวแปรให้ตรงกับ Model
-        val movieShowtimeSelectionList: List[(Int, String)] = MovieShowtime.generateMovieShowtimeSelectionList(movieShowtimes) // TODO: - แก้ชื่อตัวแปรให้ตรงกับ Model
-
-        println("------------------------ Movie Showtimes -----------------------------")
-        MovieShowtimeView.printMovieShowtimeSelectionList(movieShowtimeSelectionList)
-
-        // TODO: - แก้ชื่อตัวแปรให้ตรงกับ Model
-        // NOTES: 
-        // คำว่า Selection/Selectable ยังดูสับสน
-        // - ตอนนี้เหมือนเอา Business Logic กับ Library มาปะปนใช้งานกัน (ควรทำ Middleware) - 
-        val movieShowtimeSelectionSet = MovieShowtime.generateMovieShowtimeSelectableSet(movieShowtimeSelectionList) 
-        // NOTES: 
-        // - ชื่อ processInput ไม่สื่อถึง Business Logic -- อยู่ผิดที่ผิดทาง ไม่รู้เลยว่า ฟังก์ชันทำหน้าที่อะไร
-        // - ไม่รู้ด้วยว่ามันคือ Type อะไร (ต่อให้รู้ว่ามันคือ String แต่ก็ไม่รู้ว่ามันเป็นอะไรได้บ้าง) -- Type ไม่สื่อกับการนำไปใช้
-        val input = processInput(movieShowtimeSelectionSet) 
-        // ** ทำไมต้อง ทำให้กดเข้าไปดูถึง Low-Level (Context ไม่มี/ไม่ชัดเจน, ชื่อไม่ตรง, Type ไม่มี)
-
-        if (input == "EXIT") {
-            println("App is quiting, Bye bye")
-            sys.exit(1)
-        }
-        
-        // TODOS: 
-        // - แก้ชื่อตัวแปร
-        // NOTE:
-        // - ทำไม ไม่เป็นฟังก์ชันเดียว ที่ได้ SelectedMovieShowtime เลย
-        val selectedMovieShowtime = movieShowtimes.apply(input.toInt) 
+        val selectedMovieShowtime = ConsoleMovieTicketView.promptForMovieShowtimeSelection(movieShowtimes)
         val movieTicket = MovieTicket(selectedMovieShowtime)
-        val printedMovieTicket = MovieTicketPresenter(movieTicket)
+        val movieTicketPresenter = MovieTicketPresenter(movieTicket)
 
-        ConsoleMovieTicketView.displayMovieTicket(printedMovieTicket)
+        ConsoleMovieTicketView.displayMovieTicket(movieTicketPresenter)
     }
 
     def isOnlyDigits(string: String): Boolean = string.forall(_.isDigit)
