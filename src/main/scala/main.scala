@@ -138,6 +138,8 @@ object MovieTicketPresenter {
 
 }
 
+trait MovieTicketView {}
+
 object ConsoleMovieTicketView {
     def printFormattedTicket(movieTicket: MovieTicketPresenter): Unit = {
         val movieShowtimeDateTime = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm").format(movieTicket.showtime)
