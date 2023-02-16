@@ -71,15 +71,6 @@ object MovieShowtime {
             options.map { case (option, index) => (index + 1, MovieShowtimePresenter.formatMenuItem(option)) }
         }
 
-        // TODOS:
-        // - แก้ชื่อฟังก์ชัน ตามชื่อ Model ที่เปลี่ยนไป
-        // - Function บรรทัดเดียว ไม่ต้องใช้ { }
-        // NOTES:
-        // - คำว่า Selectable กำกวมมาก (ทำไมใช้คำนี้ ต่างจาก Selection ยังไง)
-        // - ฟังก์ชันนี้ อาจจะไม่จำเป็น
-        def generateMovieShowtimeSelectableSet(movieShowtimeSelectionList: List[(Int, String)]): Set[String] =
-            movieShowtimeSelectionList.map { case (index, item) => index.toString }.toSet
-
 }
 
 object MovieShowtimePresenter {
