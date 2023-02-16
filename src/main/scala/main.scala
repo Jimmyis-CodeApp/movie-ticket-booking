@@ -91,6 +91,11 @@ object MovieShowtimePresenter {
             .format(movieShowtime.showtime.startAt)} " +
           s"(Cinema ${movieShowtime.cinema.id})"
     
+    def selectMovieShowtime(
+        movieShowtimes: List[MovieShowtime], 
+        selector: String
+    ): MovieShowtime = movieShowtimes.apply(selector.toInt - 1)
+
 }
 
 object MovieShowtimeView {
