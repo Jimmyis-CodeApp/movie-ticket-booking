@@ -186,33 +186,6 @@ object Main {
 
     def isEscapeKey(string: String): Boolean = string.charAt(0) == 27
 
-    // TODOS: 
-    // - ชื่อ parameter ไม่ชัดเจน และไม่สะท้อนกับ Type (List -> Set)
-    def processInput(acceptInputsList: Set[String]): String = {
-        val bufferedReader = new BufferedReader(new InputStreamReader(System.in))
-        var input = bufferedReader.readLine()
-
-        // TODOS:
-        // 
-        // NOTES:
-        // - มันคือ Validator น่าจะเขียนให้มันง่ายกว่านี้ หรือทำเป็นฟังก์ชันแยก, น่าจะใช้ Switch/Case แทนได้
-        breakable {
-            while (input != null && input.length != 0) {
-                // Check if the first character is the ASCII value for Esc (27)
-                if (isEscapeKey(input)) {
-                    input = "EXIT"
-                    break()
-                } else if (acceptInputsList.contains(input)) {
-                    break()
-                } else {
-                    input = bufferedReader.readLine()
-                }
-            }
-        }
-
-        input
-    }
-
     def promptForUserInput(): String = new BufferedReader(new InputStreamReader(System.in)).readLine()
 
     def validateAcceptString(acceptStrings: Set[String], string: String): String =
