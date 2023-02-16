@@ -140,6 +140,7 @@ object MovieTicketPresenter {
 
 trait MovieTicketView {
     def promptForMovieShowtimeSelection(movieShowtimes: List[MovieShowtime]): MovieShowtime
+    def displayMovieTicket(movieTicketPresenter: MovieTicketPresenter): Unit
 
 }
 
