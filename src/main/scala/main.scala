@@ -233,4 +233,6 @@ object Main {
         input
     }
 
+    def promptForUserInput(): String = new BufferedReader(new InputStreamReader(System.in)).readLine()
+
 }
