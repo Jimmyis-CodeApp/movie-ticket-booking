@@ -159,6 +159,14 @@ object ConsoleMovieTicketView {
         println(s"+-----------------------------------+")
     }
 
+    def promptForMovieShowtimeSelection(movieShowtimes: List[MovieShowtime]): MovieShowtime = {
+        println("------------------------ Movie Showtimes -----------------------------")
+        MovieShowtimeView.printMovieShowtimes(movieShowtimes)
+        
+        val input = Main.promptForUserInput
+        MovieShowtimePresenter.selectMovieShowtime(movieShowtimes, input)
+    }
+
 }
 
 // NOTE: ชื่อ Object ไม่สะท้อนกับสิ่งที่ App ทำได้จริง
