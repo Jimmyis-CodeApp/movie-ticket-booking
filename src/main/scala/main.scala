@@ -138,7 +138,7 @@ object MovieTicketPresenter {
 
 }
 
-object MovieTicketView {
+object ConsoleMovieTicketView {
     def printFormattedTicket(movieTicket: MovieTicketPresenter): Unit = {
         val movieShowtimeDateTime = DateTimeFormatter.ofPattern("dd/MM/YYYY:HH.mm").format(movieTicket.showtime)
 
@@ -193,7 +193,7 @@ object MovieTicketBooking {
         val movieTicket = MovieTicket(selectedMovieShowtime)
         val printedMovieTicket = MovieTicketPresenter(movieTicket)
 
-        MovieTicketView.printFormattedTicket(printedMovieTicket)
+        ConsoleMovieTicketView.printFormattedTicket(printedMovieTicket)
     }
 
     def isOnlyDigits(string: String): Boolean = string.forall(_.isDigit)
