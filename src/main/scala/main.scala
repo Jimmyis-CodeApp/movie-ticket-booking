@@ -243,4 +243,11 @@ object Main {
 
     def promptForUserInput(): String = new BufferedReader(new InputStreamReader(System.in)).readLine()
 
+    def validateAcceptString(acceptStrings: Set[String], string: String): String =
+        string match {
+            case _ if isEscapeKey(string) => "EXIT"
+            case _ if acceptStrings.contains(string) => string
+            case _ => "PROMPT"
+        }
+
 }
