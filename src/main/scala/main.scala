@@ -138,7 +138,10 @@ object MovieTicketPresenter {
 
 }
 
-trait MovieTicketView {}
+trait MovieTicketView {
+    def promptForMovieShowtimeSelection(movieShowtimes: List[MovieShowtime]): MovieShowtime
+
+}
 
 object ConsoleMovieTicketView {
     def printFormattedTicket(movieTicket: MovieTicketPresenter): Unit = {
