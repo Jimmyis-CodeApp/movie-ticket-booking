@@ -108,6 +108,13 @@ object MovieShowtimeView {
             println(s"$index. $item")
         }
 
+    def printMovieShowtimes(movieShowtimes: List[MovieShowtime]): Unit = {
+        movieShowtimes.zipWithIndex.map { case (movieShowtime, index) => {
+            val order = index + 1
+            println(s"$order. ${MovieShowtimePresenter.formatMenuItem(movieShowtime)}")
+        }}
+    }
+
 }
 
 case class MovieTicket(movieShowtime: MovieShowtime)
